@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PureAir</title>
+        <link rel="stylesheet" href="./sass/styles.scss" />
+    </head>
+    <body class='loading'>
+        <div class="wrapper">
+            <div class="loader">
+                <div class="preloader">
+                    <div class="preloader__container">
+                        <h1 class="preloader__container__percent">000</h1>
+                    </div>
+                </div>
+            </div>
+            <header class="site-header">
+                <div class="brand"></div>
+                <nav class="main-nav"></nav>
+            </header>
+
+            <!-- <div class="scroll-container">
+            </div> -->
+            <div class="canvas-wrapper wrapper-1">
+                <canvas id="canvas-window"></canvas>
+                <!-- <div id="canvas-window"><img src="images/frames/1.png" alt=""/></div> -->
+            </div>
+            <div class="canvas-wrapper wrapper-2">
+                <canvas id="canvas-viruses"></canvas>
+            </div>
+
+            <section class="scene one">
+                <svg
+                    class="svg-screen svg-screen__room"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink= "http://www.w3.org/1999/xlink"
+                    viewBox="0 0 1920 1080"
+                    preserveAspectRatio="xMidYMid slice">
+                    <image xmlns:xlink= "http://www.w3.org/1999/xlink" xlink:href="./images/bg.png" preserveAspectRatio="xMidYMid slice" width="100%" />
+                </svg>
+
+                <svg
+                    class="svg-screen svg-screen__virus"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink= "http://www.w3.org/1999/xlink"
+                    viewBox="0 0 1920 1080"
+                    preserveAspectRatio="xMidYMid slice">
+                    <defs>
+                        <clipPath id="mask">
+                            <circle  class="rentgen" id="mask-circle" cx="50%" cy="50%" r="8%" style="fill: #ffffff"/>
+                        </clipPath>
+                    </defs>
+                    <image clip-path="url(#mask)"
+                    viewBox="0 0 1920 1080"
+                    preserveAspectRatio="xMidYMid slice" xmlns:xlink= "http://www.w3.org/1999/xlink" xlink:href="./images/bacc.jpg" />
+                    <circle class="rentgen-border" id="circle-shadow" cx="50%" cy="50%" r="8%" style="stroke: #fff; fill: transparent; stroke-width: 4;" />
+                </svg>
+                <div class="box"></div>
+            </section>
+
+            <section class="scene two">
+                <div class="text">
+                    <h2>Powierchnia która chroni</h2>
+                    <p>Dzięki nałożeniu powłoki PureAir Twoje pomieszczenia i Ty złapią oddech!</p>
+                </div>
+            </section>
+            <section class="scene three">
+
+            </section>
+
+            <section class="scene four">
+                <div class="container">
+                    <form action="" class="calculator">
+                        <div class="fieldset">
+                            <p class="field-group"><label for="">Powerzchnia</label><input type="number" name="" id=""></p>
+                            <p class="field-group"><label for=""></label><input type="number" name="" id=""></p>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </body>
+    <script src="js/index.js"></script>
+</html>
