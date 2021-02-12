@@ -8,11 +8,33 @@ gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.defaults({
     // markers: true
 });
+const now = new Date().getMilliseconds();
 
-const now = new Date().getTime();
-const loadTime = now - performance.timing.navigationStart;
-// const loadTime = window.performance.timing.domContentLoadedEventEnd;
-console.log(loadTime);
+const winWidth = window.innerWidth;
+
+const imgBox = document.querySelector('.img-box');
+
+const svgImage = document.querySelectorAll('image');
+
+svgImage.forEach(img => {
+    let oneImg = document.createElement('img');
+    oneImg.src = img.href.baseVal;
+    imgBox.append(oneImg);
+});
+
+window.addEventListener('load', function() {
+    console.log('window loaded');
+    // const loadTime = now - window.performance.timing.loadEventEnd;
+    // console.log(loadTime);
+    document.querySelector(".preloader__container__percent").innerHTML = "100%";
+    setTimeout(()=>{
+        document.body.classList.remove("loading");
+        gsap.to(".loader", 0.3, { delay: 0.5, y: "-100%" });
+    }, 500);
+});
+
+
+const imgs = document.images;
 
 let pagePercentLoaded = 0;
 const loaderTimer = setInterval(function() {
@@ -20,11 +42,18 @@ const loaderTimer = setInterval(function() {
     document.querySelector(".preloader__container__percent").innerHTML = pagePercentLoaded + "%";
     if(pagePercentLoaded == 100){
         clearInterval(loaderTimer);
-        document.body.classList.remove("loading");
-        gsap.to(".loader", 0.3, { delay: 0.5, y: "-100%" });
     }
-}, loadTime / 100);
+}, 50);
 
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+window.addEventListener('resize', () => {
+  // We execute the same script as before
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
 
 const canvas = document.querySelector("#canvas-windows");
 const context = canvas.getContext("2d");
@@ -89,24 +118,11 @@ let tl = new gsap.timeline({
         // onLeave: () => console.log('onLeave')
     }
 });
-// let tlb = new gsap.timeline({
-//     scrollTrigger: {
-//         trigger: ".five",
-//         start: "top top",
-//         end: "100%",
-//         // markers: true,
-//         scrub: true,
-//         pin:true,
-//         // onLeave: () => console.log('onLeave')
-//     },
-//     scale: 0.4,
-//     duration: 3
-// });
-
-tl.to(canvas, {scale: 1,duration: 1});
-// tlb.to(canvasBack, {scale: 0.4,duration: 2});
-// tl.to(".svg-screen__virus", {opacity: 0});
-// tl.to(".svg-screen__room", {opacity: 0,duration: 1});
+if (winWidth < 480) {
+    tl.to(canvas, {scale: 0.6,duration: 1});
+} else {
+    tl.to(canvas, {scale: 1,duration: 1});
+}
 
 
 gsap.to(frames, {
@@ -119,7 +135,6 @@ gsap.to(frames, {
         scrub: true,
         onUpdate: (self) => {
             renderOne();
-            // console.dir(self);
         },
         onLeave: () => {
             clearCanvas(context);
@@ -152,10 +167,9 @@ gsap.to(frames, {
         end: "350%",
         scrub: true,
         onLeaveBack: () => {
-            // console.log('onLeaveBack');
             clearCanvas(virusContext);
         },
-        onUpdate: renderViruses // use animation onUpdate instead of scrollTrigger's onUpdate
+        onUpdate: renderViruses
     },
 });
 
@@ -182,9 +196,6 @@ gsap.to(frames, {
 
     },
 });
-
-
-
 
 gsap.to(sun, {
     scrollTrigger: {
@@ -215,31 +226,6 @@ gsap.to(".text", {
     }
 });
 
-// gsap.to(canvasBack, {
-//
-//     scrollTrigger: {
-//         trigger: ".six",
-//         start: "top top",
-//         end: "bottom bottom",
-//         scrub: 1,
-//         pin: true
-//     },
-//     scale: 0.4,
-// });
-
-// gsap.to('#canvas-windows-back', {
-//     scrollTrigger: {
-//         trigger: ".six",
-//         start: "top top",
-//         end: "100%",
-//         // markers: true,
-//         scrub: true,
-//         pin:true,
-//         // onLeave: () => console.log('onLeave')
-//     },
-//     scale: 0.4
-// });
-
 gsap.to(".five", {
     opacity: 1,
 
@@ -252,15 +238,20 @@ gsap.to(".five", {
     }
 });
 
+let formOffset = '100%';
+
+if (winWidth < 480) {
+    formOffset = '50%';
+}
+
 gsap.to(".contact-form", {
     opacity: 1,
-    x: "100%",
+    x: formOffset,
 
     scrollTrigger: {
         trigger: ".five-form",
         start: "top top",
-        end: "100%",
-        markers: true,
+        end: "50%",
         scrub: true,
         pin: true
     }
@@ -273,24 +264,10 @@ let tlb = new gsap.timeline({
         end: "50%",
         scrub: true,
         pin:true,
-        // onLeave: () => console.log('onLeave')
     }
 });
 
 tlb.to(canvasBack, {scale: 0.4,duration: 2});
-
-
-// gsap.to(".six", {
-//     opacity: 1,
-//
-//     scrollTrigger: {
-//         trigger: ".five",
-//         start: "bottom bottom",
-//         end: "100%",
-//         scrub: 1,
-//         pin: true
-//     }
-// });
 
 function renderOne() {
     clearCanvas(context);
@@ -355,7 +332,7 @@ window.addEventListener('mousemove', function(e) {
 }, false);
 
 document.addEventListener('touchmove', function(e) {
-    e.preventDefault();
+    // e.preventDefault();
     var touch = e.targetTouches[0];
     if (touch) {
         update(cursorPoint(touch, svgElement));

@@ -11,7 +11,7 @@
             <div class="loader">
                 <div class="preloader">
                     <div class="preloader__container">
-                        <h1 class="preloader__container__percent">000</h1>
+                        <div id="loadPercent" class="preloader__container__percent">000</div>
                     </div>
                 </div>
             </div>
@@ -24,12 +24,10 @@
             </div> -->
             <div class="canvas-wrapper">
                 <canvas id="canvas-windows"></canvas>
-                <!-- <div id="canvas-window"><img src="images/frames/1.png" alt=""/></div> -->
             </div>
 
             <div class="canvas-wrapper">
                 <canvas id="canvas-window"></canvas>
-                <!-- <div id="canvas-window"><img src="images/frames/1.png" alt=""/></div> -->
             </div>
 
             <div class="canvas-wrapper">
@@ -38,6 +36,22 @@
 
             <div class="canvas-wrapper">
                 <canvas id="canvas-windows-back"></canvas>
+            </div>
+
+            <div class="canvas-wrapper">
+                <form action="" class="form contact-form">
+                    <div class="form__row">
+                        <label for="">Powerzchnia</label>
+                        <input type="number" name="" id="">
+                    </div>
+                    <div class="form__row">
+                        <label for="">Phone</label>
+                        <input type="number" name="" id="">
+                    </div>
+                    <div class="form__row">
+                        <button class="btn">Submit</button>
+                    </div>
+                </form>
             </div>
 
             <section class="scene one">
@@ -61,11 +75,10 @@
                             <circle  class="rentgen" id="mask-circle" cx="50%" cy="50%" r="6%" style="fill: #ffffff"/>
                         </clipPath>
                     </defs>
-                    <image clip-path="url(#mask)"
-                    viewBox="0 0 1920 1080"
-                    preserveAspectRatio="xMidYMid slice" xmlns:xlink= "http://www.w3.org/1999/xlink" xlink:href="./images/bacc.jpg" />
+                    <image clip-path="url(#mask)" xmlns:xlink= "http://www.w3.org/1999/xlink" xlink:href="./images/bacc.jpg" width="100%" />
                     <circle class="rentgen-border" id="circle-shadow" cx="50%" cy="50%" r="6%" style="stroke: #fff; fill: transparent; stroke-width: 4;" />
                 </svg>
+                <canvas id="canvas-windows"></canvas>
             </section>
 
             <section class="scene two">
@@ -107,23 +120,11 @@
                     <image clip-path="url(#mask-2)" xmlns:xlink= "http://www.w3.org/1999/xlink" xlink:href="./images/bg.png" width="100%" />
                     <circle class="rentgen-border" id="circle-shadow-2" cx="50%" cy="50%" r="6%" style="stroke: #fff; fill: transparent; stroke-width: 4;" />
                 </svg>
-                <form action="" class="form contact-form">
-                    <div class="form__row">
-                        <label for="">Powerzchnia</label>
-                        <input type="number" name="" id="">
-                    </div>
-                    <div class="form__row">
-                        <label for="">Phone</label>
-                        <input type="number" name="" id="">
-                    </div>
-                    <div class="form__row">
-                        <button class="btn">Submit</button>
-                    </div>
-                </form>
                 <div class="five-box"></div>
                 <div class="five-form"></div>
             </section>
         </div>
+        <div class="img-box"></div>
     </body>
     <script src="js/index.js"></script>
 </html>
