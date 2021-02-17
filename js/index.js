@@ -1,64 +1,26 @@
+import { Loader } from './loader';
+import { Cursor } from './cursor';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger.js";
 import imageFrames from "../images/frames/*.png";
 import imageFramesBack from "../images/frames-back/*.png";
 import virusFrames from "../images/virus/*.png";
 
+new Loader();
+new Cursor();
+
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.defaults({
     // markers: true
 });
-const now = new Date().getMilliseconds();
 
-const winWidth = window.innerWidth;
-
-const imgBox = document.querySelector('.img-box');
-
-const svgImage = document.querySelectorAll('image');
-
-svgImage.forEach(img => {
-    let oneImg = document.createElement('img');
-    oneImg.src = img.href.baseVal;
-    imgBox.append(oneImg);
-});
-
-window.addEventListener('load', function() {
-    console.log('window loaded');
-    // const loadTime = now - window.performance.timing.loadEventEnd;
-    // console.log(loadTime);
-    document.querySelector(".preloader__container__percent").innerHTML = "100%";
-    setTimeout(()=>{
-        document.body.classList.remove("loading");
-        gsap.to(".loader", 0.3, { delay: 0.5, y: "-100%" });
-    }, 500);
-});
-
-
-const imgs = document.images;
-
-let pagePercentLoaded = 0;
-const loaderTimer = setInterval(function() {
-    pagePercentLoaded++;
-    document.querySelector(".preloader__container__percent").innerHTML = pagePercentLoaded + "%";
-    if(pagePercentLoaded == 100){
-        clearInterval(loaderTimer);
-    }
-}, 50);
-
-// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-let vh = window.innerHeight * 0.01;
-// Then we set the value in the --vh custom property to the root of the document
-document.documentElement.style.setProperty('--vh', `${vh}px`);
-window.addEventListener('resize', () => {
-  // We execute the same script as before
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-});
+const isTouch = function() { return navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i); };
+const isXXsWidth = window.innerWidth < 480;
 
 const canvas = document.querySelector("#canvas-windows");
 const context = canvas.getContext("2d");
 
-const canvasSingle = document.querySelector("#canvas-windows");
+const canvasSingle = document.querySelector("#canvas-window");
 const contextSingle = canvasSingle.getContext("2d");
 
 const canvasBack = document.querySelector("#canvas-windows-back");
@@ -66,6 +28,13 @@ const contextBack = canvasBack.getContext("2d");
 
 const virusCanvas = document.querySelector("#canvas-viruses");
 const virusContext = virusCanvas.getContext("2d");
+
+const firstSection = document.querySelector('.one');
+const secondSection = document.querySelector('.two');
+const threeSection = document.querySelector('.three');
+const fourSection = document.querySelector('.four');
+const fiveSection = document.querySelector('.five');
+const sixSection = document.querySelector('.six');
 
 const sun = document.getElementById('sun');
 
@@ -107,64 +76,100 @@ for (let i = 0; i < virusFramesCount; i++) {
     viruses.push(img);
 }
 
-
 let tl = new gsap.timeline({
     scrollTrigger: {
-        trigger: ".one",
+        trigger: firstSection,
         start: "top top",
         end: "100%",
         scrub: true,
         pin:true,
-        // onLeave: () => console.log('onLeave')
-    }
+        // onUpdate: () => enterFirstScreen = true,
+        // onLeave: () => enterFirstScreen = false
+    },
+    opacity: 0
 });
-if (winWidth < 480) {
+if (isXXsWidth) {
     tl.to(canvas, {scale: 0.6,duration: 1});
 } else {
     tl.to(canvas, {scale: 1,duration: 1});
 }
 
+tl.to(firstSection, {opacity: 0, duration: 1});
 
-gsap.to(frames, {
+tl.to(frames, {
     frame: frameCountAll - 1,
     snap: "frame",
     scrollTrigger: {
-        trigger: ".one",
+        trigger: firstSection,
         start: "top top",
-        end: "150%",
+        end: "200%",
         scrub: true,
         onUpdate: (self) => {
             renderOne();
+            // clearCanvas(contextSingle);
+
+            canvas.style.display = '';
+            canvasSingle.parentElement.style.display = '';
         },
         onLeave: () => {
             clearCanvas(context);
+            canvas.style.display = 'none';
+            canvasSingle.parentElement.style.display = 'block';
         }
     },
 });
 
-gsap.to(frames, {
+tl.to(".scene__text--covering", {
+    scrollTrigger: {
+        trigger: secondSection,
+        start: "top top",
+        end: "50%",
+        // markers: true,
+        scrub: true,
+        pin: true,
+        onToggle: self => {
+            let elem = self.trigger.querySelector('.scene__text--covering');
+            if (self.isActive) {
+                setActiveClass(elem);
+                canvas.parentElement.style.zIndex = -1;
+                elem.style.opacity = '1';
+            } else {
+                removeActiveClass(elem);
+                canvas.parentElement.style.zIndex = "";
+                elem.style.opacity = '0';
+            }
+        },
+    },
+    x: '20%'
+});
+
+tl.to(frames, {
     frame: frameCountOne,
     snap: "frame",
     scrollTrigger: {
-        trigger: ".two",
-        start: "top top",
-        end: "260%",
+        trigger: secondSection,
+        start: "48%",
+        end: '480%',
+        // markers: true,
         scrub: true,
-        onUpdate: renderSingle,
+        onUpdate: () => {
+            renderSingle();
+            canvas.style.display = 'none';
+        },
         onLeave: () => {
-            clearCanvas(context);
+            clearCanvas(contextSingle);
         }
     },
 });
 
-gsap.to(frames, {
+tl.to(frames, {
     frame: virusFramesCount - 1,
     snap: "frame",
     opacity:1,
     scrollTrigger: {
-        trigger: ".two",
-        start: "top top",
-        end: "350%",
+        trigger: secondSection,
+        start: "40%",
+        end: "450%",
         scrub: true,
         onLeaveBack: () => {
             clearCanvas(virusContext);
@@ -173,20 +178,87 @@ gsap.to(frames, {
     },
 });
 
+let tlf = new gsap.timeline({
+    scrollTrigger: {
+        trigger: fourSection,
+        start: "top top",
+        end: "150%",
+        scrub: true,
+        pin:true,
+        onUpdate: () => {
+            canvasSingle.parentElement.style.display = 'block';
+        },
+        onToggle: self => {
+            let elem = self.trigger.querySelector('.scene__text--sun');
+            let elem2 = self.trigger.querySelector('.scene__text--virus');
+            if (self.isActive) {
+                canvasSingle.parentElement.style.zIndex = 0;
+            } else {
+                removeActiveClass(elem);
+                removeActiveClass(elem2);
+                elem.style.opacity = '0';
+                elem2.style.opacity = '0';
+                canvasSingle.parentElement.style.zIndex = "";
+            }
+        },
+    },
+});
+
+tlf.to(sun, {
+    x: '100%',
+    rotation: 180,
+    opacity: 1,
+    onUpdate: () => {
+        // console.log(this);
+    }
+});
+
+tlf.to(".scene__text--sun", {
+    x: '20%',
+    onStart: startText,
+    onComplete: completeText,
+    onUpdate: updateText
+});
+
+tlf.to(".scene__text--virus", {
+    x: '-20%',
+    onStart: startText,
+    onComplete: completeText,
+    onUpdate: updateText
+});
+
+function startText() {
+    let elem = this.targets()[0];
+    removeActiveClass(elem);
+}
+
+function completeText() {
+    let elem = this.targets()[0];
+    removeActiveClass(elem);
+}
+
+function updateText() {
+    let elem = this.targets()[0];
+    setActiveClass(elem);
+    elem.style.opacity = '1';
+}
+
 gsap.to(frames, {
     frame: frameCountBack - 1,
     snap: "frame",
     scale: 1,
     scrollTrigger: {
-        trigger: ".five",
+        trigger: sixSection,
         start: "top top",
         end: "100%",
         scrub: true,
+        // markers: true,
         onEnter: () => {
             clearCanvas(contextBack);
         },
-        onUpdate: (self) => {
+        onUpdate: () => {
             renderBack();
+            // clearCanvas(contextSingle);
             // console.dir(self);
         },
         onLeaveBack: () => {
@@ -194,72 +266,88 @@ gsap.to(frames, {
             // console.log('onLeaveBack');
         },
 
+    }
+});
+
+gsap.to(threeSection, {
+    // duration: 4,
+    // opacity: 0,
+    scrollTrigger: {
+        trigger: threeSection,
+        // start: "top top",
+        // end: "100%",
+        onUpdate: () => {
+            canvasSingle.parentElement.style.display = 'block';
+        },
     },
 });
 
-gsap.to(sun, {
+gsap.to(fiveSection, {
+    // duration: 4,
+    // opacity: 0,
     scrollTrigger: {
-        trigger: ".four",
-        start: "bottom bottom",
-        end: "100%",
-        scrub: true,
-        pin:true,
-        onLeaveBack: () => {
-        },
+        trigger: fiveSection,
+        // start: "top top",
+        // end: "100%",
         onUpdate: () => {
+            canvasSingle.parentElement.style.display = 'block';
+        },
+    },
+});
+
+gsap.to(sixSection, {
+    // duration: 4,
+    // opacity: 0,
+    scrollTrigger: {
+        trigger: sixSection,
+        start: "top top",
+        end: "180%",
+        scrub: true,
+        pin: true,
+        onEnterBack: () => {
+            // canvasSingle.parentElement.style.display = 'none';
+            document.querySelectorAll('.canvas-wrapper').forEach(item => {
+                item.style.display = '';
+            });
+        },
+        onLeaveBack: () => {
+            // canvasSingle.parentElement.style.display = 'block';
+            // renderSingle();
+            document.querySelectorAll('.canvas-wrapper').forEach(item => {
+                item.style.display = '';
+            });
+        },
+        onEnter: () => {
+            // clearCanvas(contextSingle);
+            // canvasSingle.parentElement.style.display = 'none';
+            document.querySelectorAll('.canvas-wrapper').forEach(item => {
+                item.style.display = '';
+            });
+        },
+        onUpdate: self => {
+            // console.log(self);
+            // clearCanvas(contextSingle);
+            canvasSingle.parentElement.style.display = 'none';
+            canvas.style.display = 'none';
+            if (self.progress > 0.5) {
+                self.trigger.style.opacity = 2 - (self.progress * 2);
+                canvasBack.style.opacity = 2 - (self.progress * 2);
+            }
+        },
+        onLeave: self => {
+            // console.log(self);
+            document.querySelectorAll('.canvas-wrapper').forEach(item => {
+                item.style.display = 'none';
+            });
+            // renderSingle();
+            clearCanvas(contextBack);
         }
     },
-    x: '100%',
-    rotation: 180,
-    opacity: 1
-});
-
-gsap.to(".text", {
-    opacity: 1,
-
-    scrollTrigger: {
-        trigger: ".two",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-        pin: true
-    }
-});
-
-gsap.to(".five", {
-    opacity: 1,
-
-    scrollTrigger: {
-        trigger: ".five",
-        start: "top top",
-        end: "200%",
-        scrub: true,
-        pin: true
-    }
-});
-
-let formOffset = '100%';
-
-if (winWidth < 480) {
-    formOffset = '50%';
-}
-
-gsap.to(".contact-form", {
-    opacity: 1,
-    x: formOffset,
-
-    scrollTrigger: {
-        trigger: ".five-form",
-        start: "top top",
-        end: "50%",
-        scrub: true,
-        pin: true
-    }
 });
 
 let tlb = new gsap.timeline({
     scrollTrigger: {
-        trigger: ".five-box",
+        trigger: ".six-box",
         start: "top top",
         end: "50%",
         scrub: true,
@@ -293,49 +381,27 @@ function clearCanvas(element) {
     element.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-// Rect cursor
-let svgElement = document.querySelector('.one .svg-screen__room');
-let svgElementLast = document.querySelector('.five .svg-screen__room');
-let maskedElement = document.getElementById('mask-circle');
-let circleFeedback = document.getElementById('circle-shadow');
-let maskedElement2 = document.getElementById('mask-circle-2');
-let circleFeedback2 = document.getElementById('circle-shadow-2');
-let svgPoint = svgElement.createSVGPoint();
-let firstScreen = document.querySelector('.scene.one');
-let lastScreen = document.querySelector('.scene.five');
-
-function cursorPoint(e, svg) {
-    svgPoint.x = e.clientX;
-    svgPoint.y = e.clientY;
-    return svgPoint.matrixTransform(svg.getScreenCTM().inverse());
+function setActiveClass(element) {
+    element.classList.add('active');
 }
 
-function update(svgCoords) {
-    maskedElement.setAttribute('cx', svgCoords.x);
-    maskedElement.setAttribute('cy', svgCoords.y);
-    circleFeedback.setAttribute('cx', svgCoords.x);
-    circleFeedback.setAttribute('cy', svgCoords.y);
-    // document.body.style.cursor = 'none';
+function removeActiveClass(element) {
+    element.classList.remove('active');
 }
 
-function updateLast(svgCoords) {
-    maskedElement2.setAttribute('cx', svgCoords.x);
-    maskedElement2.setAttribute('cy', svgCoords.y);
-    circleFeedback2.setAttribute('cx', svgCoords.x);
-    circleFeedback2.setAttribute('cy', svgCoords.y);
-    // document.body.style.cursor = 'none';
-}
 
-window.addEventListener('mousemove', function(e) {
-    update(cursorPoint(e, svgElement));
-    updateLast(cursorPoint(e, svgElementLast));
-}, false);
-
-document.addEventListener('touchmove', function(e) {
-    // e.preventDefault();
-    var touch = e.targetTouches[0];
-    if (touch) {
-        update(cursorPoint(touch, svgElement));
-        updateLast(cursorPoint(touch, svgElementLast));
+window.addEventListener('resize', () => {
+    setVhProp();
+});
+setVhProp();
+//
+function setVhProp() {
+    let vh = "100vh";
+    if (isTouch()) {
+        // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+        // const vh = window.innerHeight * 0.01;
+        const vh = `${window.outerHeight}px`;
+        // Then we set the value in the --vh custom property to the root of the document
+        document.documentElement.style.setProperty('--vh', vh);
     }
-}, false);
+}

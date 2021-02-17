@@ -9,11 +9,7 @@
     <body class='loading'>
         <div class="wrapper">
             <div class="loader">
-                <div class="preloader">
-                    <div class="preloader__container">
-                        <div id="loadPercent" class="preloader__container__percent">000</div>
-                    </div>
-                </div>
+                <div id="loadPercent" class="loader__percent">000</div>
             </div>
             <header class="site-header">
                 <div class="brand"></div>
@@ -26,8 +22,9 @@
                 <canvas id="canvas-windows"></canvas>
             </div>
 
-            <div class="canvas-wrapper">
+            <div class="canvas-wrapper canvas-wrapper--hidden">
                 <canvas id="canvas-window"></canvas>
+                <!-- <img src="./images/frames/101.png" id="canvas-window"> -->
             </div>
 
             <div class="canvas-wrapper">
@@ -38,21 +35,8 @@
                 <canvas id="canvas-windows-back"></canvas>
             </div>
 
-            <div class="canvas-wrapper">
-                <form action="" class="form contact-form">
-                    <div class="form__row">
-                        <label for="">Powerzchnia</label>
-                        <input type="number" name="" id="">
-                    </div>
-                    <div class="form__row">
-                        <label for="">Phone</label>
-                        <input type="number" name="" id="">
-                    </div>
-                    <div class="form__row">
-                        <button class="btn">Submit</button>
-                    </div>
-                </form>
-            </div>
+            <!-- <div class="canvas-wrapper">
+            </div> -->
 
             <section class="scene one">
                 <svg
@@ -82,21 +66,31 @@
             </section>
 
             <section class="scene two">
-                <div class="text">
-                    <h2>Powierchnia która chroni</h2>
+                <div class="scene__text scene__text--covering">
+                    <h2>Powierchnia która chroni 1</h2>
                     <p>Dzięki nałożeniu powłoki PureAir Twoje pomieszczenia i Ty złapią oddech!</p>
                 </div>
             </section>
 
             <section class="scene three">
-
             </section>
 
             <section class="scene four">
-                <img class="sun" id="sun" src="./images/sun.jpg" alt="">
+                <img class="sun" id="sun" src="./images/sun.png" alt="">
+                <div class="scene__text scene__text--sun">
+                    <h2>Powierchnia która chroni 2</h2>
+                    <p>Dzięki nałożeniu powłoki PureAir Twoje pomieszczenia i Ty złapią oddech!</p>
+                </div>
+                <div class="scene__text scene__text--virus">
+                    <h2>Powierchnia która chroni 3</h2>
+                    <p>Dzięki nałożeniu powłoki PureAir Twoje pomieszczenia i Ty złapią oddech!</p>
+                </div>
             </section>
 
             <section class="scene five">
+            </section>
+
+            <section class="scene six">
                 <svg
                     class="svg-screen svg-screen__room"
                     xmlns="http://www.w3.org/2000/svg"
@@ -120,11 +114,28 @@
                     <image clip-path="url(#mask-2)" xmlns:xlink= "http://www.w3.org/1999/xlink" xlink:href="./images/bg.png" width="100%" />
                     <circle class="rentgen-border" id="circle-shadow-2" cx="50%" cy="50%" r="6%" style="stroke: #fff; fill: transparent; stroke-width: 4;" />
                 </svg>
-                <div class="five-box"></div>
-                <div class="five-form"></div>
+                <div class="six-box"></div>
+            </section>
+
+            <section class="scene seven">
+                <div class="six-form"></div>
+                <form action="" class="form contact-form">
+                    <div class="form__row">
+                        <label for="">Powerzchnia</label>
+                        <input type="number" name="" id="">
+                    </div>
+                    <div class="form__row">
+                        <label for="">Phone</label>
+                        <input type="number" name="" id="">
+                    </div>
+                    <div class="form__row">
+                        <button class="btn">Submit</button>
+                    </div>
+                </form>
             </section>
         </div>
         <div class="img-box"></div>
     </body>
+    <!-- <script src="js/loader.js"></script> -->
     <script src="js/index.js"></script>
 </html>
