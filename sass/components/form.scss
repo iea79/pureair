@@ -1,4 +1,12 @@
 .form {
+	background: var(--brand-lightgray);
+	margin-left: -2rem;
+	margin-right: -2rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+
 	&__row {
 		margin-bottom: 15px;
 
@@ -43,7 +51,7 @@ textarea {
 	font-size: 16px;
 	font-weight: 300;
 	font-family: $main_font_family;
-	border-radius: 5px;
+	border-radius: 100px;
 	transition: all 0.3s;
 
 	&:hover {
@@ -159,5 +167,23 @@ input[type=checkbox] {
 	&:disabled:checked:before,
 	&:disabled:indeterminate:before {
 		color: #aaa;
+	}
+}
+
+label {
+	margin-bottom: 10px;
+	display: inline-block;
+	strong {
+		display: block;
+		font-weight: 800;
+	}
+}
+
+.order-form {
+	display: flex;
+
+	.form__row {
+		display: flex;
+		align-items: center;
 	}
 }

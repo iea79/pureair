@@ -20,9 +20,6 @@ const isXXsWidth = window.innerWidth < 480;
 const canvas = document.querySelector("#canvas-windows");
 const context = canvas.getContext("2d");
 
-const canvasSingle = document.querySelector("#canvas-window");
-const contextSingle = canvasSingle.getContext("2d");
-
 const canvasBack = document.querySelector("#canvas-windows-back");
 const contextBack = canvasBack.getContext("2d");
 
@@ -38,13 +35,13 @@ const sixSection = document.querySelector('.six');
 
 const sun = document.getElementById('sun');
 
-canvas.width = canvasBack.width = canvasSingle.width = virusCanvas.width = 1024;
-canvas.height = canvasBack.height = canvasSingle.height = virusCanvas.height = 1024;
+canvas.width = canvasBack.width  = virusCanvas.width = 1920;
+canvas.height = canvasBack.height  = virusCanvas.height = 1080;
 
-const frameCountAll = 101;
-const frameCountOne = 100;
-const frameCountBack = 44;
-const virusFramesCount = 111;
+const frameCountAll = 65;
+const frameCountOne = 64;
+const frameCountBack = 35;
+const virusFramesCount = 101;
 
 const images = [];
 const imagesBack = [];
@@ -60,15 +57,18 @@ window.onload = () => {
 
 for (let i = 0; i < frameCountAll; i++) {
     const img = new Image();
-    img.src = imageFrames[i+1];
+    img.src = imageFrames[i + 1];
     images.push(img);
 }
 
+console.log(images);
+
 for (let i = 0; i < frameCountBack; i++) {
     const img = new Image();
-    img.src = imageFramesBack[i+1];
+    img.src = imageFramesBack[i];
     imagesBack.push(img);
 }
+console.log(imagesBack);
 
 for (let i = 0; i < virusFramesCount; i++) {
     const img = new Image();
@@ -83,8 +83,6 @@ let tl = new gsap.timeline({
         end: "100%",
         scrub: true,
         pin:true,
-        // onUpdate: () => enterFirstScreen = true,
-        // onLeave: () => enterFirstScreen = false
     },
     opacity: 0
 });
@@ -106,15 +104,14 @@ tl.to(frames, {
         scrub: true,
         onUpdate: (self) => {
             renderOne();
-            // clearCanvas(contextSingle);
-
             canvas.style.display = '';
-            canvasSingle.parentElement.style.display = '';
         },
         onLeave: () => {
             clearCanvas(context);
             canvas.style.display = 'none';
-            canvasSingle.parentElement.style.display = 'block';
+        },
+        onEnterBack: () => {
+            clearCanvas(virusContext);
         }
     },
 });
@@ -124,7 +121,6 @@ tl.to(".scene__text--covering", {
         trigger: secondSection,
         start: "top top",
         end: "50%",
-        // markers: true,
         scrub: true,
         pin: true,
         onToggle: self => {
@@ -144,25 +140,6 @@ tl.to(".scene__text--covering", {
 });
 
 tl.to(frames, {
-    frame: frameCountOne,
-    snap: "frame",
-    scrollTrigger: {
-        trigger: secondSection,
-        start: "48%",
-        end: '480%',
-        // markers: true,
-        scrub: true,
-        onUpdate: () => {
-            renderSingle();
-            canvas.style.display = 'none';
-        },
-        onLeave: () => {
-            clearCanvas(contextSingle);
-        }
-    },
-});
-
-tl.to(frames, {
     frame: virusFramesCount - 1,
     snap: "frame",
     opacity:1,
@@ -174,7 +151,10 @@ tl.to(frames, {
         onLeaveBack: () => {
             clearCanvas(virusContext);
         },
-        onUpdate: renderViruses
+        onUpdate: () => {
+            renderViruses();
+            clearCanvas(contextBack);
+        }
     },
 });
 
@@ -182,23 +162,23 @@ let tlf = new gsap.timeline({
     scrollTrigger: {
         trigger: fourSection,
         start: "top top",
-        end: "150%",
+        end: "130%",
         scrub: true,
         pin:true,
         onUpdate: () => {
-            canvasSingle.parentElement.style.display = 'block';
+            virusCanvas.parentElement.style.display = 'block';
         },
         onToggle: self => {
             let elem = self.trigger.querySelector('.scene__text--sun');
             let elem2 = self.trigger.querySelector('.scene__text--virus');
             if (self.isActive) {
-                canvasSingle.parentElement.style.zIndex = 0;
+                virusCanvas.parentElement.style.zIndex = 0;
             } else {
                 removeActiveClass(elem);
                 removeActiveClass(elem2);
                 elem.style.opacity = '0';
                 elem2.style.opacity = '0';
-                canvasSingle.parentElement.style.zIndex = "";
+                virusCanvas.parentElement.style.zIndex = "";
             }
         },
     },
@@ -208,9 +188,6 @@ tlf.to(sun, {
     x: '100%',
     rotation: 180,
     opacity: 1,
-    onUpdate: () => {
-        // console.log(this);
-    }
 });
 
 tlf.to(".scene__text--sun", {
@@ -252,52 +229,20 @@ gsap.to(frames, {
         start: "top top",
         end: "100%",
         scrub: true,
-        // markers: true,
         onEnter: () => {
-            clearCanvas(contextBack);
+            clearCanvas(virusContext);
         },
         onUpdate: () => {
             renderBack();
-            // clearCanvas(contextSingle);
-            // console.dir(self);
         },
         onLeaveBack: () => {
-            clearCanvas(contextBack);
-            // console.log('onLeaveBack');
+            clearCanvas(virusContext);
         },
 
     }
 });
 
-gsap.to(threeSection, {
-    // duration: 4,
-    // opacity: 0,
-    scrollTrigger: {
-        trigger: threeSection,
-        // start: "top top",
-        // end: "100%",
-        onUpdate: () => {
-            canvasSingle.parentElement.style.display = 'block';
-        },
-    },
-});
-
-gsap.to(fiveSection, {
-    // duration: 4,
-    // opacity: 0,
-    scrollTrigger: {
-        trigger: fiveSection,
-        // start: "top top",
-        // end: "100%",
-        onUpdate: () => {
-            canvasSingle.parentElement.style.display = 'block';
-        },
-    },
-});
-
 gsap.to(sixSection, {
-    // duration: 4,
-    // opacity: 0,
     scrollTrigger: {
         trigger: sixSection,
         start: "top top",
@@ -305,29 +250,22 @@ gsap.to(sixSection, {
         scrub: true,
         pin: true,
         onEnterBack: () => {
-            // canvasSingle.parentElement.style.display = 'none';
             document.querySelectorAll('.canvas-wrapper').forEach(item => {
                 item.style.display = '';
             });
         },
         onLeaveBack: () => {
-            // canvasSingle.parentElement.style.display = 'block';
-            // renderSingle();
             document.querySelectorAll('.canvas-wrapper').forEach(item => {
                 item.style.display = '';
             });
         },
         onEnter: () => {
-            // clearCanvas(contextSingle);
-            // canvasSingle.parentElement.style.display = 'none';
             document.querySelectorAll('.canvas-wrapper').forEach(item => {
                 item.style.display = '';
             });
         },
         onUpdate: self => {
-            // console.log(self);
-            // clearCanvas(contextSingle);
-            canvasSingle.parentElement.style.display = 'none';
+            virusCanvas.parentElement.style.display = 'none';
             canvas.style.display = 'none';
             if (self.progress > 0.5) {
                 self.trigger.style.opacity = 2 - (self.progress * 2);
@@ -335,12 +273,10 @@ gsap.to(sixSection, {
             }
         },
         onLeave: self => {
-            // console.log(self);
             document.querySelectorAll('.canvas-wrapper').forEach(item => {
                 item.style.display = 'none';
             });
-            // renderSingle();
-            clearCanvas(contextBack);
+            clearCanvas(virusContext);
         }
     },
 });
@@ -355,16 +291,11 @@ let tlb = new gsap.timeline({
     }
 });
 
-tlb.to(canvasBack, {scale: 0.4,duration: 2});
+tlb.to(canvasBack, {scale: 0.49,duration: 2});
 
 function renderOne() {
     clearCanvas(context);
     context.drawImage(images[frames.frame], 0, 0);
-}
-
-function renderSingle() {
-    clearCanvas(contextSingle);
-    contextSingle.drawImage(images[frameCountOne], 0, 0);
 }
 
 function renderBack() {

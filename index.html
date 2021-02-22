@@ -1,141 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>PureAir</title>
-        <link rel="stylesheet" href="sass/styles.scss" />
-    </head>
-    <body class='loading'>
-        <div class="wrapper">
-            <div class="loader">
-                <div id="loadPercent" class="loader__percent">000</div>
-            </div>
-            <header class="site-header">
-                <div class="brand"></div>
-                <nav class="main-nav"></nav>
-            </header>
 
-            <!-- <div class="scroll-container">
-            </div> -->
-            <div class="canvas-wrapper">
-                <canvas id="canvas-windows"></canvas>
-            </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PureAir</title>
+    <link rel="stylesheet" href="sass/styles.scss" />
+</head>
 
-            <div class="canvas-wrapper canvas-wrapper--hidden">
-                <canvas id="canvas-window"></canvas>
-                <!-- <img src="./images/frames/101.png" id="canvas-window"> -->
-            </div>
-
-            <div class="canvas-wrapper">
-                <canvas id="canvas-viruses"></canvas>
-            </div>
-
-            <div class="canvas-wrapper">
-                <canvas id="canvas-windows-back"></canvas>
-            </div>
-
-            <!-- <div class="canvas-wrapper">
-            </div> -->
-
-            <section class="scene one">
-                <svg
-                    class="svg-screen svg-screen__room"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink= "http://www.w3.org/1999/xlink"
-                    viewBox="0 0 1920 1080"
-                    preserveAspectRatio="xMidYMid slice">
-                    <image xmlns:xlink= "http://www.w3.org/1999/xlink" xlink:href="./images/bg.png" preserveAspectRatio="xMidYMid slice" width="100%" />
-                </svg>
-
-                <svg
-                    class="svg-screen svg-screen__virus"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink= "http://www.w3.org/1999/xlink"
-                    viewBox="0 0 1920 1080"
-                    preserveAspectRatio="xMidYMid slice">
-                    <defs>
-                        <clipPath id="mask">
-                            <circle  class="rentgen" id="mask-circle" cx="50%" cy="50%" r="6%" style="fill: #ffffff"/>
-                        </clipPath>
-                    </defs>
-                    <image clip-path="url(#mask)" xmlns:xlink= "http://www.w3.org/1999/xlink" xlink:href="./images/bacc.jpg" width="100%" />
-                    <circle class="rentgen-border" id="circle-shadow" cx="50%" cy="50%" r="6%" style="stroke: #fff; fill: transparent; stroke-width: 4;" />
-                </svg>
-                <canvas id="canvas-windows"></canvas>
-            </section>
-
-            <section class="scene two">
-                <div class="scene__text scene__text--covering">
-                    <h2>Powierchnia która chroni 1</h2>
-                    <p>Dzięki nałożeniu powłoki PureAir Twoje pomieszczenia i Ty złapią oddech!</p>
-                </div>
-            </section>
-
-            <section class="scene three">
-            </section>
-
-            <section class="scene four">
-                <img class="sun" id="sun" src="./images/sun.png" alt="">
-                <div class="scene__text scene__text--sun">
-                    <h2>Powierchnia która chroni 2</h2>
-                    <p>Dzięki nałożeniu powłoki PureAir Twoje pomieszczenia i Ty złapią oddech!</p>
-                </div>
-                <div class="scene__text scene__text--virus">
-                    <h2>Powierchnia która chroni 3</h2>
-                    <p>Dzięki nałożeniu powłoki PureAir Twoje pomieszczenia i Ty złapią oddech!</p>
-                </div>
-            </section>
-
-            <section class="scene five">
-            </section>
-
-            <section class="scene six">
-                <svg
-                    class="svg-screen svg-screen__room"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink= "http://www.w3.org/1999/xlink"
-                    viewBox="0 0 1920 1080"
-                    preserveAspectRatio="xMidYMid slice">
-                    <image xmlns:xlink= "http://www.w3.org/1999/xlink" xlink:href="./images/bg.png" preserveAspectRatio="xMidYMid slice" width="100%" />
-                </svg>
-
-                <svg
-                    class="svg-screen svg-screen__virus"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink= "http://www.w3.org/1999/xlink"
-                    viewBox="0 0 1920 1080"
-                    preserveAspectRatio="xMidYMid slice">
-                    <defs>
-                        <clipPath id="mask-2">
-                            <circle  class="rentgen" id="mask-circle-2" cx="50%" cy="50%" r="6%" style="fill: #ffffff"/>
-                        </clipPath>
-                    </defs>
-                    <image clip-path="url(#mask-2)" xmlns:xlink= "http://www.w3.org/1999/xlink" xlink:href="./images/bg.png" width="100%" />
-                    <circle class="rentgen-border" id="circle-shadow-2" cx="50%" cy="50%" r="6%" style="stroke: #fff; fill: transparent; stroke-width: 4;" />
-                </svg>
-                <div class="six-box"></div>
-            </section>
-
-            <section class="scene seven">
-                <div class="six-form"></div>
-                <form action="" class="form contact-form">
-                    <div class="form__row">
-                        <label for="">Powerzchnia</label>
-                        <input type="number" name="" id="">
-                    </div>
-                    <div class="form__row">
-                        <label for="">Phone</label>
-                        <input type="number" name="" id="">
-                    </div>
-                    <div class="form__row">
-                        <button class="btn">Submit</button>
-                    </div>
-                </form>
-            </section>
+<body class=''>
+    <header class='site-header container'>
+        <svg width="259" height="48" viewBox="0 0 259 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <g>
+                <g>
+                    <path
+                        d="M14.174,27.745l-9.047,0l-0,12.892l-5.127,-0l-0,-34.68l14.475,-0c6.409,-0 11.159,3.695 11.159,10.856c0,7.162 -4.75,10.932 -11.46,10.932m0.226,-16.812l-9.273,-0l-0,11.912l9.273,-0c3.997,-0 5.957,-2.262 5.957,-5.955c0,-3.846 -2.337,-5.957 -5.957,-5.957"
+                        class='green-fill' />
+                    <path
+                        d="M48.101,41.241c-8.595,-0 -13.042,-5.579 -13.042,-15.078l-0,-20.132l5.202,0l-0,19.981c-0,6.558 2.714,10.027 7.915,10.027c5.428,-0 7.992,-3.394 7.992,-9.726l-0,-20.282l5.203,0l0,20.207c0.075,9.65 -4.674,15.003 -13.27,15.003"
+                        class='green-fill' />
+                    <path
+                        d="M91.829,26.539l7.087,14.174l-5.957,0l-6.859,-13.722l-7.918,0l0,13.722l-5.126,0l-0,-34.682l15.231,0c6.03,0 11.157,3.243 11.157,10.33c-0,5.504 -2.94,8.973 -7.615,10.178m-3.542,-15.606l-10.105,0l0,11.158l10.105,-0c3.467,-0 5.879,-1.81 5.879,-5.579c0,-3.62 -2.337,-5.579 -5.879,-5.579"
+                        class='green-fill' />
+                    <path
+                        d="M147.469,7.841c-2.412,-2.412 -5.277,-3.618 -8.671,-3.618c-3.392,0 -6.331,1.206 -8.744,3.618c-2.488,2.488 -3.695,5.956 -3.469,10.329c-4.373,-0.151 -7.841,0.981 -10.328,3.469c-2.413,2.412 -3.62,5.352 -3.62,8.744c-0,3.394 1.207,6.334 3.62,8.671l8.746,8.747l3.618,-3.62l-8.745,-8.745c-1.358,-1.433 -2.111,-3.092 -2.111,-5.053c0,-2.034 0.678,-3.693 2.111,-5.126c1.356,-1.356 3.091,-2.111 5.051,-2.111c2.035,-0 3.694,0.679 5.052,2.111l8.744,8.746l3.62,-3.62l-8.746,-8.744c-1.357,-1.433 -2.112,-3.092 -2.112,-5.051c0,-2.036 0.68,-3.695 2.112,-5.127c1.433,-1.433 3.015,-2.111 5.051,-2.111c2.036,-0 3.695,0.678 5.051,2.111l8.746,8.745l3.62,-3.618l-8.596,-8.747Z"
+                        class='green-fill' />
+                    <path
+                        d="M161.87,8.746l-8.747,-8.746l-3.618,3.62l8.746,8.744c1.357,1.358 2.11,3.093 2.11,5.053c0,2.034 -0.678,3.693 -2.11,5.127c-1.357,1.356 -3.092,2.111 -5.052,2.111c-2.035,-0 -3.694,-0.68 -5.052,-2.111l-8.744,-8.747l-3.62,3.62l8.746,8.745c1.357,1.357 2.112,3.092 2.112,5.051c-0,2.036 -0.68,3.695 -2.112,5.128c-1.433,1.432 -3.015,2.11 -5.051,2.11c-2.036,-0 -3.695,-0.678 -5.051,-2.11l-8.822,-8.746l-3.619,3.618l8.746,8.746c2.413,2.413 5.277,3.62 8.671,3.62c3.392,-0 6.332,-1.207 8.744,-3.62c2.488,-2.488 3.695,-5.955 3.469,-10.328c4.374,0.15 7.841,-0.981 10.329,-3.469c2.412,-2.413 3.62,-5.353 3.62,-8.745c-0.077,-3.394 -1.283,-6.258 -3.695,-8.671"
+                        class='blue-fill' />
+                    <path
+                        d="M199.189,40.638l-2.94,-8.218l-13.872,0l-2.865,8.218l-5.428,-0l12.44,-34.681l5.503,0l12.59,34.681l-5.428,-0Zm-7.313,-20.809c-0.829,-2.488 -2.262,-6.483 -2.638,-7.992c-0.377,1.509 -1.66,5.428 -2.488,7.992l-2.79,7.917l10.706,0l-2.79,-7.917Z"
+                        class='blue-fill' />
+                    <rect x="214.795" y="5.956" width="5.202" height="34.68" class='blue-fill' />
+                    <path
+                        d="M250.909,26.539l7.087,14.174l-5.957,0l-6.859,-13.722l-7.918,0l0,13.722l-5.126,0l-0,-34.682l15.23,0c6.031,0 11.158,3.243 11.158,10.33c-0,5.504 -2.94,8.973 -7.615,10.178m-3.543,-15.606l-10.104,0l0,11.158l10.104,-0c3.468,-0 5.88,-1.81 5.88,-5.579c0,-3.62 -2.337,-5.579 -5.88,-5.579"
+                        class='blue-fill' />
+                </g>
+            </g>
+        </svg>
+        <a href="#order-form" class="button">zamów</a>
+    </header>
+    <div class="wrapper">
+        <div class="loader">
+            <div id="loadPercent" class="loader__percent">000</div>
         </div>
-        <div class="img-box"></div>
-    </body>
-    <!-- <script src="js/loader.js"></script> -->
-    <script src="js/index.js"></script>
+        <header class="site-header">
+            <div class="brand"></div>
+            <nav class="main-nav"></nav>
+        </header>
+
+        <!-- <div class="scroll-container">
+            </div> -->
+        <div class="canvas-wrapper">
+            <canvas id="canvas-windows"></canvas>
+        </div>
+
+        <div class="canvas-wrapper canvas-wrapper--hidden">
+            <canvas id="canvas-window"></canvas>
+            <!-- <img src="./images/frames/101.png" id="canvas-window"> -->
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="canvas-viruses"></canvas>
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="canvas-windows-back"></canvas>
+        </div>
+
+        <!-- <div class="canvas-wrapper">
+            </div> -->
+
+        <section class="scene one">
+            <svg class="svg-screen svg-screen__room" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+                <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./images/bg.png" preserveAspectRatio="xMidYMid slice" width="100%" />
+            </svg>
+
+            <svg class="svg-screen svg-screen__virus" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <clipPath id="mask">
+                        <circle class="rentgen" id="mask-circle" cx="50%" cy="50%" r="6%" style="fill: #ffffff" />
+                    </clipPath>
+                </defs>
+                <image clip-path="url(#mask)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./images/bacc.jpg" width="100%" />
+                <circle class="rentgen-border" id="circle-shadow" cx="50%" cy="50%" r="6%" style="stroke: #fff; fill: transparent; stroke-width: 4;" />
+            </svg>
+            <canvas id="canvas-windows"></canvas>
+        </section>
+
+        <section class="scene two">
+            <div class="scene__text scene__text--covering">
+                <h2>Powierchnia która chroni 1</h2>
+                <p>Dzięki nałożeniu powłoki PureAir Twoje pomieszczenia i Ty złapią oddech!</p>
+            </div>
+        </section>
+
+        <section class="scene three">
+        </section>
+
+        <section class="scene four">
+            <img class="sun" id="sun" src="./images/sun.png" alt="">
+            <div class="scene__text scene__text--sun">
+                <h2>Powierchnia która chroni 2</h2>
+                <p>Dzięki nałożeniu powłoki PureAir Twoje pomieszczenia i Ty złapią oddech!</p>
+            </div>
+            <div class="scene__text scene__text--virus">
+                <h2>Powierchnia która chroni 3</h2>
+                <p>Dzięki nałożeniu powłoki PureAir Twoje pomieszczenia i Ty złapią oddech!</p>
+            </div>
+        </section>
+
+        <section class="scene five">
+        </section>
+
+        <section class="scene six">
+            <svg class="svg-screen svg-screen__room" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+                <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./images/bg2.png" preserveAspectRatio="xMidYMid slice" width="100%" />
+            </svg>
+
+            <svg class="svg-screen svg-screen__virus" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <clipPath id="mask-2">
+                        <circle class="rentgen" id="mask-circle-2" cx="50%" cy="50%" r="6%" style="fill: #ffffff" />
+                    </clipPath>
+                </defs>
+                <image clip-path="url(#mask-2)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./images/bg2.png" width="100%" />
+                <circle class="rentgen-border" id="circle-shadow-2" cx="50%" cy="50%" r="6%" style="stroke: #fff; fill: transparent; stroke-width: 4;" />
+            </svg>
+            <div class="six-box"></div>
+        </section>
+
+        <section class="scene seven honey">
+            <div class="container">
+                <h2 class="scene-title center">
+                    Jak to działa?
+                </h2>
+                <div class="grid-third">
+                    <div class="icon-box">
+                        <figure><svg width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                                style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                                <g>
+                                    <path
+                                        d="M68.682,12.941c-0.429,0.019 -0.774,0.374 -0.78,0.804c-0,1.792 -0.437,3.403 -1.084,4.506c-0.647,1.102 -1.432,1.635 -2.184,1.635c-0.44,0.01 -0.796,0.375 -0.796,0.815c-0,0.441 0.356,0.806 0.796,0.816c0.752,0 1.537,0.533 2.184,1.636c0.647,1.102 1.084,2.714 1.084,4.506c0.001,0.446 0.369,0.813 0.816,0.813c0.446,-0 0.814,-0.367 0.816,-0.813c0,-1.792 0.437,-3.404 1.084,-4.506c0.647,-1.103 1.432,-1.636 2.184,-1.636c0.44,-0.01 0.796,-0.375 0.796,-0.816c-0,-0.44 -0.356,-0.805 -0.796,-0.815c-0.752,-0 -1.537,-0.532 -2.184,-1.635c-0.647,-1.102 -1.084,-2.714 -1.084,-4.506c-0.006,-0.443 -0.373,-0.805 -0.816,-0.805c-0.012,0 -0.024,0 -0.036,0.001Zm0.034,5.123c0.148,0.354 0.309,0.698 0.493,1.013c0.381,0.65 0.862,1.201 1.406,1.625c-0.544,0.424 -1.025,0.974 -1.406,1.624c-0.184,0.314 -0.344,0.658 -0.493,1.014c-0.148,-0.355 -0.308,-0.7 -0.492,-1.014c-0.381,-0.649 -0.862,-1.2 -1.405,-1.624c0.543,-0.424 1.024,-0.975 1.405,-1.625c0.184,-0.313 0.344,-0.657 0.492,-1.013Zm7.972,6.921c-0.545,0.023 -0.983,0.475 -0.991,1.021c-0,2.633 -0.643,5.004 -1.609,6.64c-0.965,1.635 -2.16,2.459 -3.339,2.459c-0.56,0.012 -1.014,0.476 -1.014,1.036c0,0.56 0.454,1.024 1.014,1.036c1.178,-0 2.374,0.824 3.339,2.459c0.966,1.636 1.609,4.007 1.609,6.64c0.003,0.567 0.47,1.031 1.036,1.031c0.567,-0 1.033,-0.464 1.036,-1.031c0,-2.633 0.643,-5.004 1.609,-6.64c0.965,-1.635 2.161,-2.459 3.339,-2.459c0.56,-0.012 1.014,-0.476 1.014,-1.036c-0,-0.56 -0.454,-1.024 -1.014,-1.036c-1.178,-0 -2.374,-0.825 -3.339,-2.459c-0.966,-1.636 -1.609,-4.007 -1.609,-6.64c-0.007,-0.563 -0.473,-1.022 -1.036,-1.022c-0.015,-0 -0.03,0 -0.045,0.001l0,-0Zm-15.829,1.257c-1.59,-0 -2.901,1.311 -2.901,2.901c0,1.59 1.311,2.9 2.901,2.9c1.59,0 2.901,-1.31 2.901,-2.9c-0,-1.59 -1.311,-2.901 -2.901,-2.901Zm-8.433,2.041c-0.546,0.024 -0.984,0.475 -0.992,1.021c0,2.275 -0.554,4.321 -1.376,5.721c-0.821,1.4 -1.818,2.076 -2.773,2.076c-0.561,0.01 -1.017,0.474 -1.017,1.036c-0,0.561 0.456,1.026 1.017,1.036c0.955,-0 1.952,0.675 2.773,2.076c0.822,1.4 1.376,3.446 1.376,5.721c0.003,0.567 0.47,1.032 1.037,1.032c0.566,-0 1.033,-0.465 1.036,-1.032c-0,-2.275 0.554,-4.321 1.376,-5.721c0.822,-1.4 1.818,-2.076 2.773,-2.076c0.562,-0.01 1.018,-0.475 1.018,-1.036c-0,-0.562 -0.456,-1.026 -1.018,-1.036c-0.955,-0 -1.951,-0.676 -2.773,-2.076c-0.822,-1.4 -1.376,-3.446 -1.376,-5.721c-0.008,-0.563 -0.473,-1.022 -1.036,-1.022c-0.015,-0 -0.03,0 -0.046,0.001l0.001,-0Zm8.433,0.026c0.47,0 0.829,0.359 0.829,0.829c-0,0.47 -0.359,0.829 -0.829,0.829c-0.47,-0 -0.829,-0.359 -0.829,-0.829c0,-0.469 0.359,-0.829 0.829,-0.829Zm15.874,3.562c0.249,0.649 0.531,1.266 0.86,1.823c0.584,0.989 1.314,1.83 2.15,2.442c-0.836,0.612 -1.566,1.453 -2.15,2.442c-0.329,0.558 -0.611,1.174 -0.86,1.824c-0.25,-0.65 -0.531,-1.267 -0.86,-1.824c-0.584,-0.99 -1.314,-1.83 -2.15,-2.442c0.836,-0.612 1.566,-1.453 2.15,-2.442c0.329,-0.558 0.61,-1.174 0.86,-1.823Zm-12.068,2.517c-0.545,0.024 -0.983,0.475 -0.991,1.021c0,4.244 -1.044,8.073 -2.658,10.765c-1.614,2.692 -3.707,4.176 -5.885,4.176c-0.565,0.006 -1.026,0.472 -1.026,1.036c-0,0.565 0.461,1.031 1.026,1.036c1.85,0 3.638,1.071 5.124,3.043l-9.925,-3.335c-0.099,-0.034 -0.201,-0.052 -0.305,-0.055c-0.121,-0.003 -0.241,0.016 -0.355,0.055l-48.964,16.456c-0.421,0.141 -0.706,0.538 -0.706,0.982c0,0.444 0.285,0.84 0.706,0.982l48.964,16.456c0.214,0.072 0.446,0.072 0.66,-0l48.964,-16.456c0.421,-0.142 0.706,-0.538 0.706,-0.982c-0,-0.444 -0.285,-0.841 -0.706,-0.982l-24.482,-8.228l-7.129,-2.399c0.225,-0.479 0.467,-0.934 0.722,-1.36c1.614,-2.692 3.707,-4.177 5.885,-4.177c0.565,-0.004 1.028,-0.47 1.028,-1.036c0,-0.565 -0.463,-1.032 -1.028,-1.036c-2.178,-0 -4.271,-1.484 -5.885,-4.176c-1.614,-2.692 -2.659,-6.521 -2.659,-10.765c-0.008,-0.563 -0.473,-1.022 -1.036,-1.022c-0.015,-0 -0.03,0 -0.045,0.001l0,-0Zm-12.194,0.395c0.188,0.452 0.391,0.888 0.625,1.287c0.484,0.825 1.094,1.525 1.785,2.063c-0.691,0.539 -1.301,1.238 -1.785,2.063c-0.234,0.399 -0.437,0.835 -0.625,1.287c-0.189,-0.452 -0.391,-0.888 -0.626,-1.287c-0.484,-0.825 -1.094,-1.525 -1.784,-2.063c0.69,-0.539 1.3,-1.238 1.784,-2.063c0.234,-0.399 0.437,-0.835 0.626,-1.287Zm12.239,7.88c0.491,1.68 1.118,3.243 1.918,4.576c1.077,1.798 2.446,3.241 4.01,4.148c-1.564,0.907 -2.933,2.349 -4.01,4.146c-0.8,1.333 -1.427,2.897 -1.918,4.576c-0.491,-1.679 -1.117,-3.242 -1.917,-4.576c-1.077,-1.797 -2.447,-3.239 -4.011,-4.146c1.564,-0.908 2.934,-2.35 4.011,-4.148c0.8,-1.333 1.426,-2.896 1.917,-4.576Zm16.765,7.594c-1.59,-0 -2.901,1.311 -2.901,2.901c0,1.589 1.311,2.901 2.901,2.901c1.59,-0 2.901,-1.311 2.901,-2.901c0,-1.59 -1.311,-2.901 -2.901,-2.901Zm0,2.071c0.47,0 0.829,0.359 0.829,0.829c0,0.47 -0.359,0.829 -0.829,0.829c-0.47,-0 -0.829,-0.359 -0.829,-0.829c0,-0.469 0.359,-0.829 0.829,-0.829Zm-31.475,1.877l11.841,3.98c0.758,1.681 1.32,3.661 1.611,5.823l-13.53,4.484l-21.366,-7.081l21.444,-7.206Zm4.222,3.377c-1.589,0 -2.9,1.311 -2.9,2.902c0,1.589 1.311,2.9 2.9,2.9c1.59,0 2.901,-1.31 2.901,-2.9c0,-1.59 -1.311,-2.902 -2.901,-2.902Zm0,2.073c0.47,-0 0.83,0.359 0.83,0.829c-0,0.469 -0.36,0.828 -0.83,0.828c-0.47,0 -0.828,-0.359 -0.828,-0.828c-0,-0.47 0.358,-0.829 0.828,-0.829Zm12.693,0.232l4.452,1.498l-5.264,1.744c0.198,-1.145 0.473,-2.232 0.812,-3.242l0,-0Zm7.717,2.596l21.08,7.084l-21.123,7.099c-0.009,-0.004 -0.018,-0.007 -0.027,-0.011l-21.345,-7.073l10.429,-3.457c0.019,0.408 0.03,0.821 0.03,1.238c0.011,0.561 0.475,1.017 1.036,1.017c0.561,-0 1.025,-0.456 1.036,-1.017c-0,-0.664 0.026,-1.318 0.074,-1.959l8.74,-2.896c0.024,-0.008 0.047,-0.017 0.07,-0.026l-0,0.001Zm-49.346,0.026l21.342,7.073l-21.295,7.057l-21.045,-7.073l20.998,-7.057Zm24.636,8.164l21.397,7.091l-21.319,7.165l-21.397,-7.191l21.319,-7.065Z"
+                                        style="fill-rule:nonzero;" />
+                                </g>
+                            </svg></figure>
+                        <h4></h4>
+                        <p></p>
+                    </div>
+                    <div class="icon-box">
+                        <figure><svg width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                                style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                                <path
+                                    d="M57.05,76.11l-14.05,0c-0.023,0 -0.047,0.001 -0.07,0.001c-2.152,-0 -3.925,-1.769 -3.93,-3.921l0,-5.06c-0.021,-1.821 -0.81,-3.55 -2.17,-4.76c-4.094,-3.723 -6.431,-9.007 -6.43,-14.54c-0.005,-2.717 0.561,-5.405 1.66,-7.89c3.12,-7.111 10.183,-11.726 17.949,-11.726c10.752,0 19.6,8.848 19.6,19.6c-0,5.521 -2.333,10.793 -6.419,14.506c-1.368,1.227 -2.163,2.972 -2.19,4.81l-0,5.06c-0.005,2.152 -1.778,3.92 -3.93,3.92c-0.007,0 -0.013,0 -0.02,0Zm-7.05,-45.67c-6.886,-0.006 -13.153,4.084 -15.92,10.39c-2.993,6.847 -1.268,14.892 4.27,19.91c1.821,1.627 2.875,3.948 2.9,6.39l-0,5.06c0.005,0.94 0.78,1.71 1.72,1.71c0.01,0 0.02,0 0.03,0l14.1,0c0.936,-0.005 1.705,-0.774 1.71,-1.71l-0,-5.06c0.049,-2.472 1.139,-4.812 3,-6.44c3.617,-3.296 5.68,-7.968 5.68,-12.861c0,-8.876 -6.791,-16.401 -15.62,-17.309c-0.69,-0.05 -1.27,-0.08 -1.87,-0.08Z"
+                                    style="fill-rule:nonzero;" />
+                                <rect x="48.9" y="9.83" width="2.2" height="10.77" />
+                                <path d="M31.958,14.368l-1.914,1.105l5.385,9.327l1.914,-1.105l-5.385,-9.327Z" />
+                                <path d="M17.648,27.873l-1.105,1.914l9.327,5.385l1.105,-1.914l-9.327,-5.385Z" />
+                                <rect x="12" y="46.73" width="10.77" height="2.2" />
+                                <path d="M25.867,60.494l-9.328,5.383l1.104,1.914l9.328,-5.383l-1.104,-1.914Z" />
+                                <path d="M74.143,60.491l-1.105,1.914l9.327,5.385l1.105,-1.914l-9.327,-5.385Z" />
+                                <rect x="77.23" y="46.73" width="10.77" height="2.2" />
+                                <path d="M82.358,27.885l-9.328,5.383l1.105,1.914l9.328,-5.383l-1.105,-1.914Z" />
+                                <path d="M68.045,14.357l-5.383,9.328l1.914,1.105l5.383,-9.328l-1.914,-1.105Z" />
+                                <path
+                                    d="M55.1,80.77l-10.1,0c-1.815,-0.098 -3.255,-1.618 -3.255,-3.435c0,-1.817 1.44,-3.337 3.255,-3.435l10.1,0c1.815,0.098 3.255,1.618 3.255,3.435c-0,1.817 -1.44,3.337 -3.255,3.435Zm-10.1,-4.66c-0.037,-0.003 -0.074,-0.005 -0.111,-0.005c-0.675,0 -1.23,0.555 -1.23,1.23c0,0.675 0.555,1.23 1.23,1.23c0.037,0 0.074,-0.002 0.111,-0.005l10.1,-0c0.037,0.003 0.074,0.005 0.111,0.005c0.675,0 1.23,-0.555 1.23,-1.23c-0,-0.675 -0.555,-1.23 -1.23,-1.23c-0.037,0 -0.074,0.002 -0.111,0.005l-10.1,0Z"
+                                    style="fill-rule:nonzero;" />
+                                <path
+                                    d="M55.1,85.43l-10.1,0c-1.815,-0.098 -3.255,-1.618 -3.255,-3.435c0,-1.817 1.44,-3.337 3.255,-3.435l10.1,0c1.815,0.098 3.255,1.618 3.255,3.435c-0,1.817 -1.44,3.337 -3.255,3.435Zm-10.1,-4.66c-0.037,-0.003 -0.074,-0.005 -0.111,-0.005c-0.675,-0 -1.23,0.555 -1.23,1.23c0,0.675 0.555,1.23 1.23,1.23c0.037,-0 0.074,-0.002 0.111,-0.005l10.1,-0c0.037,0.003 0.074,0.005 0.111,0.005c0.675,-0 1.23,-0.555 1.23,-1.23c-0,-0.675 -0.555,-1.23 -1.23,-1.23c-0.037,-0 -0.074,0.002 -0.111,0.005l-10.1,-0Z"
+                                    style="fill-rule:nonzero;" />
+                                <path d="M50.19,90.17l-0.38,0c-3.19,-0.022 -5.805,-2.65 -5.81,-5.84l2.2,0c-0,0.01 -0,0.02 -0,0.03c-0,1.986 1.625,3.624 3.61,3.64l0.38,0c1.993,0 3.635,-1.637 3.64,-3.63l2.17,0c-0.027,3.175 -2.635,5.778 -5.81,5.8Z"
+                                    style="fill-rule:nonzero;" />
+                                <path d="M54.23,76.11l-8.46,0l0,-21.35l-8.49,-5.24l25.44,0l-8.49,5.24l0,21.35Zm-6.23,-2.21l4,0l0,-20.37l3,-1.81l-9.9,0l2.9,1.81l0,20.37Z" style="fill-rule:nonzero;" /></svg></figure>
+                        <h4></h4>
+                        <p></p>
+                    </div>
+                    <div class="icon-box">
+                        <figure><svg width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                                style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                                <g>
+                                    <path
+                                        d="M94.516,54.922l-21.079,-12.203l0,-24.203c0.006,-0.557 -0.286,-1.076 -0.765,-1.36l-21.875,-12.656c-0.483,-0.279 -1.08,-0.279 -1.563,-0l-21.875,12.578c-0.48,0.277 -0.778,0.79 -0.781,1.344l0,24.312l-20.969,12.078c-0.484,0.28 -0.783,0.8 -0.781,1.36l0,25.219c-0.002,0.559 0.297,1.079 0.781,1.359l21.875,12.656c0.237,0.141 0.507,0.216 0.782,0.219c0.275,-0.003 0.544,-0.078 0.781,-0.219l20.953,-12.125l20.953,12.156c0.243,0.138 0.518,0.208 0.797,0.204c0.268,-0.001 0.532,-0.071 0.766,-0.204l21.875,-12.5c0.48,-0.277 0.778,-0.789 0.781,-1.343l0.14,-25.344c-0.012,-0.552 -0.315,-1.058 -0.796,-1.328Zm-44.407,-47.266l20.313,11.75l-0,23.313l-20.422,11.687l-20.313,-11.75l0,-23.328l20.422,-11.672Zm-21.984,84.531l-20.313,-11.75l0,-23.437l20.313,-11.547l20.313,11.766l-0.001,23.437l-20.312,11.531Zm64.063,-11.578l-20.313,11.672l-20.313,-11.719l0.001,-23.437l20.312,-11.703l20.313,11.75l-0.001,23.437Z"
+                                        style="fill-rule:nonzero;" />
+                                    <path
+                                        d="M50,43.75c6.857,0 12.5,-5.643 12.5,-12.5c0,-6.857 -5.643,-12.5 -12.5,-12.5c-6.857,0 -12.5,5.643 -12.5,12.5c0,6.857 5.643,12.5 12.5,12.5Zm0,-21.766c5.143,0 9.375,4.232 9.375,9.375c0,5.143 -4.232,9.375 -9.375,9.375c-5.143,0 -9.375,-4.232 -9.375,-9.375c0,-5.143 4.232,-9.375 9.375,-9.375Z"
+                                        style="fill-rule:nonzero;" />
+                                    <path
+                                        d="M28.125,56.359c-6.857,0 -12.5,5.643 -12.5,12.5c0,6.858 5.643,12.5 12.5,12.5c6.857,0 12.5,-5.642 12.5,-12.5c0,-6.857 -5.643,-12.5 -12.5,-12.5Zm0,21.766c-5.143,-0 -9.375,-4.232 -9.375,-9.375c0,-5.143 4.232,-9.375 9.375,-9.375c5.143,-0 9.375,4.232 9.375,9.375c0,5.143 -4.232,9.375 -9.375,9.375Z"
+                                        style="fill-rule:nonzero;" />
+                                </g>
+                            </svg></figure>
+                        <h4></h4>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="scene eight honey">
+            <div class="container">
+                <div class="six-form">
+                    <h2 class='scene-title'>Ile to kosztuje?</h2>
+                    <p class="lead">Powłoka działa 24/h przez cały rok, jej trwałość zakładana jest na ponad 40 lat, zaś gwarancja udzielana jest na 30lat - tylko ze względu na ograniczenia prawne.</p>
+                    <form action="" class="form order-form" id='order-form'>
+                        <div class="form__row">
+                            <figure>
+                                <svg width="100" height="100" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                                    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                                    <path d="M49.971,60.683l-26.84,-11.948l26.898,-11.949l26.899,11.949l-26.957,11.948Zm-22.367,-11.948l22.367,9.947l22.366,-9.947l-22.366,-9.947l-22.367,9.947Z" style="fill-rule:nonzero;" />
+                                    <g>
+                                        <path d="M81.636,51.207l-2.295,-1.001l-26.604,11.654l2.237,1.059l26.662,-11.712Z" style="fill-rule:nonzero;" />
+                                        <path d="M20.541,49.971l-2.236,1.059l26.78,11.831l2.237,-1.001l-26.781,-11.889Z" style="fill-rule:nonzero;" />
+                                    </g>
+                                </svg>
+                            </figure>
+                            <div class="input">
+                                <label for="number"><strong>Powierzchnia</strong>Twojego mieszkania/domu</label>
+                                <input type="number" name="number" id="number">
+                            </div>
+                        </div>
+                        <div class="form__row">
+                            <figure><svg width="100" height="100" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                                    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                                    <path
+                                        d="M50.733,65.506l-30.589,-0c-0.528,-0 -0.963,-0.435 -0.963,-0.964l-0,-30.16c-0,-0.528 0.435,-0.963 0.963,-0.963l4.512,0c0.529,0 0.963,0.435 0.963,0.963c0,0.529 -0.434,0.964 -0.963,0.964l-3.549,-0l0,28.233l29.626,0c0.528,0 0.963,0.435 0.963,0.963c-0,0.529 -0.435,0.964 -0.963,0.964Z"
+                                        style="fill-rule:nonzero;" />
+                                    <path d="M33.228,61.73l-9.058,0c-0.529,0 -0.963,-0.435 -0.963,-0.963c-0,-0.528 0.434,-0.963 0.963,-0.963l9.058,-0c0.528,-0 0.963,0.435 0.963,0.963c0,0.528 -0.435,0.963 -0.963,0.963Z" style="fill-rule:nonzero;" />
+                                    <path
+                                        d="M50.737,59.799c-0.083,-0.001 -0.165,-0.012 -0.245,-0.034l-26.77,-7.006c-0.511,-0.134 -0.822,-0.664 -0.689,-1.175l7.32,-27.969c0.133,-0.511 0.664,-0.822 1.175,-0.689l48.575,12.713c0.511,0.134 0.822,0.664 0.689,1.175l-4.103,15.67c-0.122,0.407 -0.499,0.687 -0.923,0.687c-0.528,0 -0.963,-0.435 -0.963,-0.963c-0,-0.069 0.007,-0.138 0.022,-0.205l3.852,-14.741l-46.711,-12.227l-6.828,26.106l25.826,6.761c0.418,0.113 0.711,0.496 0.711,0.929c-0,0.524 -0.428,0.957 -0.952,0.963l0.014,0.005Z"
+                                        style="fill-rule:nonzero;" />
+                                    <path
+                                        d="M39.686,56.905c-0.001,-0 -0.002,-0 -0.003,-0c-0.529,-0 -0.963,-0.435 -0.963,-0.963c-0,-0.083 0.01,-0.166 0.031,-0.246l7.315,-27.93c0.122,-0.407 0.499,-0.687 0.923,-0.687c0.528,-0 0.963,0.435 0.963,0.963c0,0.069 -0.007,0.138 -0.022,0.205l-7.315,27.931c-0.107,0.424 -0.491,0.725 -0.929,0.727Z"
+                                        style="fill-rule:nonzero;" />
+                                    <path
+                                        d="M68.228,41.938c-0.001,0 -0.002,0 -0.003,0c-0.529,0 -0.963,-0.435 -0.963,-0.963c-0,-0.083 0.01,-0.165 0.031,-0.246l1.826,-6.982c0.121,-0.407 0.498,-0.687 0.922,-0.687c0.529,-0 0.963,0.435 0.963,0.963c0,0.069 -0.007,0.138 -0.022,0.205l-1.825,6.983c-0.107,0.425 -0.491,0.725 -0.929,0.727Z"
+                                        style="fill-rule:nonzero;" />
+                                    <path
+                                        d="M42.536,31.377c-0.083,-0 -0.165,-0.011 -0.245,-0.033l-3.795,-0.992c-0.441,-0.096 -0.758,-0.49 -0.758,-0.941c0,-0.529 0.435,-0.963 0.964,-0.963c0.093,-0 0.186,0.013 0.276,0.04l3.799,0.997c0.427,0.107 0.729,0.494 0.729,0.934c0,0.529 -0.434,0.963 -0.963,0.963c-0.002,0 -0.004,0 -0.007,0l0,-0.005Z"
+                                        style="fill-rule:nonzero;" />
+                                    <path
+                                        d="M36.999,52.465c-0.083,-0.001 -0.166,-0.012 -0.246,-0.034l-8.384,-2.196c-0.441,-0.096 -0.758,-0.489 -0.758,-0.941c0,-0.528 0.435,-0.963 0.963,-0.963c0.094,0 0.187,0.014 0.277,0.041l8.403,2.2c0.427,0.107 0.729,0.494 0.729,0.935c-0,0.528 -0.435,0.963 -0.963,0.963c-0.003,-0 -0.005,-0 -0.007,-0l-0.014,-0.005Z"
+                                        style="fill-rule:nonzero;" />
+                                    <path d="M54.638,73.177c-0.528,-0 -0.963,-0.435 -0.963,-0.963l-0,-24.232c-0,-0.529 0.435,-0.963 0.963,-0.963c0.528,-0 0.963,0.434 0.963,0.963l0,24.232c0,0.528 -0.435,0.963 -0.963,0.963Z"
+                                        style="fill-rule:nonzero;" />
+                                    <path d="M72.518,73.177c-0.528,-0 -0.963,-0.435 -0.963,-0.963l0,-24.232c0,-0.529 0.435,-0.963 0.963,-0.963c0.529,-0 0.963,0.434 0.963,0.963l0,24.232c0,0.528 -0.434,0.963 -0.963,0.963Z" style="fill-rule:nonzero;" />
+                                    <path
+                                        d="M63.576,52.465c-5.649,-0 -9.906,-2.1 -9.906,-4.888c0,-2.788 4.257,-4.888 9.906,-4.888c5.648,0 9.905,2.1 9.905,4.903c0,2.802 -4.257,4.873 -9.905,4.873Zm-0,-7.849c-4.869,-0 -7.98,1.752 -7.98,2.961c0,1.209 3.106,2.962 7.98,2.962c4.873,-0 7.979,-1.753 7.979,-2.962c0,-1.209 -3.106,-2.961 -7.979,-2.961Z"
+                                        style="fill-rule:nonzero;" />
+                                    <path
+                                        d="M63.576,77.102c-5.649,-0 -9.906,-2.1 -9.906,-4.888c0,-0.529 0.435,-0.963 0.963,-0.963c0.529,-0 0.963,0.434 0.963,0.963c0,1.208 3.106,2.961 7.98,2.961c4.873,0 7.979,-1.753 7.979,-2.961c0,-0.529 0.435,-0.963 0.963,-0.963c0.529,-0 0.963,0.434 0.963,0.963c0,2.788 -4.257,4.888 -9.905,4.888Z"
+                                        style="fill-rule:nonzero;" />
+                                    <path
+                                        d="M63.576,57.343c-5.649,0 -9.906,-2.099 -9.906,-4.888c0,-0.528 0.435,-0.963 0.963,-0.963c0.529,0 0.963,0.435 0.963,0.963c0,1.209 3.106,2.962 7.98,2.962c4.873,-0 7.979,-1.753 7.979,-2.962c0,-0.528 0.435,-0.963 0.963,-0.963c0.529,0 0.963,0.435 0.963,0.963c0,2.789 -4.257,4.888 -9.905,4.888Z"
+                                        style="fill-rule:nonzero;" />
+                                    <path
+                                        d="M63.576,72.151c-5.649,0 -9.906,-2.099 -9.906,-4.888c0,-0.528 0.435,-0.963 0.963,-0.963c0.529,0 0.963,0.435 0.963,0.963c0,1.209 3.106,2.962 7.98,2.962c4.873,-0 7.979,-1.753 7.979,-2.962c0,-0.528 0.435,-0.963 0.963,-0.963c0.529,0 0.963,0.435 0.963,0.963c0,2.798 -4.257,4.888 -9.905,4.888Z"
+                                        style="fill-rule:nonzero;" />
+                                    <path
+                                        d="M63.576,67.225c-5.649,-0 -9.906,-2.1 -9.906,-4.888c0,-0.528 0.435,-0.963 0.963,-0.963c0.529,-0 0.963,0.435 0.963,0.963c0,1.209 3.106,2.962 7.98,2.962c4.873,-0 7.979,-1.753 7.979,-2.962c0,-0.528 0.435,-0.963 0.963,-0.963c0.529,-0 0.963,0.435 0.963,0.963c0,2.783 -4.257,4.888 -9.905,4.888Z"
+                                        style="fill-rule:nonzero;" />
+                                    <path
+                                        d="M63.576,62.284c-5.649,-0 -9.906,-2.1 -9.906,-4.888c0,-0.528 0.435,-0.963 0.963,-0.963c0.529,0 0.963,0.435 0.963,0.963c0,1.209 3.106,2.962 7.98,2.962c4.873,-0 7.979,-1.753 7.979,-2.962c0,-0.528 0.435,-0.963 0.963,-0.963c0.529,0 0.963,0.435 0.963,0.963c0,2.788 -4.257,4.888 -9.905,4.888Z"
+                                        style="fill-rule:nonzero;" /></svg></figure>
+                            <div class="input">
+                                <label for=""><strong>Szacunkowa</strong>wartość inwestycji</label>
+                                <input type="number" name="" id="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="img-box"></div>
+</body>
+<!-- <script src="js/loader.js"></script> -->
+<script src="js/index.js"></script>
+
 </html>

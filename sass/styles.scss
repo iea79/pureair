@@ -24,32 +24,28 @@ body {
         overflow: hidden;
     }
 }
+
 .scene {
-    &__text{
+    &__text {
         opacity: 0;
         position: relative;
         top: 11%;
         line-height: 1;
-        // z-index: 34;
-        // transform: translate(-40%, 0);
         width: 26em;
         margin-left: 1em;
-
-        // margin-left: auto;
-        // margin-right: auto;
-        padding: 0em 0 0.1em;
+        padding: 0 0 0.1em;
         border-bottom: 0.2em solid #000;
         font-size: 3em;
 
         @media (min-width: 480px) {
-          font-size: 1.6em;
-          margin-left: 3em;
+            font-size: 1.6em;
+            margin-left: 3em;
 
         }
 
         @media (min-width: 768px) {
-          font-size: 1em;
-          margin-left: 17em;
+            font-size: 1em;
+            margin-left: 17em;
 
         }
 
@@ -71,7 +67,8 @@ body {
                 &:after {
                     content: '';
                     opacity: 0;
-                    display: block;position: absolute;
+                    display: block;
+                    position: absolute;
                     right: -12.7em;
                     bottom: -11.3em;
                     width: 1em;
@@ -110,6 +107,7 @@ body {
             }
 
         }
+
         &--virus {
             border-bottom: 0;
             border-top: 0.2em solid #000;
@@ -129,6 +127,7 @@ body {
                         top: -0.2em;
                         transform: rotate(-162.5deg);
                     }
+
                     &:after {
                         bottom: auto;
                         right: auto;
@@ -138,13 +137,13 @@ body {
                 }
             }
         }
-
     }
 }
 @keyframes showLine {
     from {
         width: 0;
     }
+
     to {
         width: 27em;
     }
@@ -153,10 +152,12 @@ body {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
 }
+
 .loader {
     z-index: 9999;
     height: 100vh;
@@ -172,9 +173,7 @@ body {
     align-items: flex-end;
     padding: 20px;
 
-    @media (hover: none) and (pointer: coarse) {
-        // height: calc(var(--vh, 1vh) * 100);
-    }
+    @media (hover: none) and (pointer: coarse) {}
 
     @media (min-width: 768px) {
         padding: 50px;
@@ -183,6 +182,7 @@ body {
     &__percent {
         font-size: 27px;
         font-weight: 600;
+
         &:before {
             content: '';
             display: block;
@@ -192,49 +192,58 @@ body {
     }
 }
 
-// .scroll-container {
-//     position: absolute;
-//     top: 0;
-//     // height: 3000vh;
-// }
-
 .canvas-wrapper {
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 1200px;
+    left: 50%;
+    transform: translateX(-50%);
     height: 100vh;
     height: -webkit-fill-available;
     z-index: 9;
-    @media (hover: none) and (pointer: coarse) {
-        // height: calc(var(--vh, 1vh) * 100);
+    @media (hover: none) and (pointer: coarse) {}
+
+    @media (min-width: 768px) {
+        width: 1400px;
+    }
+
+    @media (min-width: 1400px) {
+        width: 1920px;
     }
 
     &--hidden {
         display: none;
     }
 
-    &--bg {
-        // z-index: -1;
-    }
-    canvas, img {
-        position: fixed;
+    &--bg {}
+
+    canvas,
+    img {
+        position: absolute;
         z-index: 9;
         left: 50%;
-        top: 51.6%;
-        transform: translate(-50%, -50%) scale(0.4);
-        max-width: 1024px;
-        max-height: 100vh;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0.49);
+        width: 1200px;
+        height: 100vh;
         display: block;
+        object-fit: cover;
+        object-position: center;
 
-        &#canvas-window {
-            // display: none;
-            @media (hover: none) and (pointer: coarse) {
-                // height: var(--vh);
-                max-height: var(--vh);
-            }
+        @media (min-width: 768px) {
+            width: 1400px;
         }
 
-        &#canvas-windows-back, &#canvas-window {
+        @media (min-width: 1400px) {
+            width: 1920px;
+        }
+
+        &#canvas-window {
+            @media (hover: none) and (pointer: coarse) {}
+        }
+
+        &#canvas-window,
+        &#canvas-windows-back {
             transform: translate(-50%, -50%) scale(0.6);
 
             @media (min-width: 480px) {
@@ -243,38 +252,29 @@ body {
         }
 
         &#canvas-viruses {
-            width: 100vh;
-            height: 100vh;
-            top: 50%;
-            transform: translate(-50%, -50%) scale(1);
-
+            transform: translate(-50%, -50%) scale(0.6);
             @media (min-width: 480px) {
                 transform: translate(-50%, -50%) scale(1);
             }
-            // padding-bottom: 100%;
         }
 
         @media (min-width: 1000px) {
-            left: 50.5%;
             max-width: none;
-            width: 59vw;
-            height: 59vw;
-            max-height: none;
         }
     }
 }
 
-// @media (orientation: portrait)
-
-
-.rentgen, .rentgen-border {
+.rentgen,
+.rentgen-border {
     display: none;
 }
 
 .wrapper {
     overflow: hidden;
+
     &:hover {
-        .rentgen, .rentgen-border {
+        .rentgen,
+        .rentgen-border {
             display: block;
         }
     }
@@ -283,28 +283,28 @@ body {
 
 section {
     height: 100vh;
-    // height: -webkit-fill-available;
     position: relative;
+
     &.one {
         @media (hover: none) and (pointer: coarse) {
             height: var(--vh);
         }
 
     }
+
     &.two {}
-    &.three {
-        // height: 50vh;
-        // height: calc(var(--vh, 1vh) * 50);
-    }
-    &.four {
-        // overflow: hidden;
-        // background-color: #eee;
-    }
+
+    &.three {}
+
+    &.four {}
+
     &.five {
-        height: 30vh;
+        height: 0;
     }
+
     &.six {
         min-height: 100vh;
+
         .six-box {
             position: absolute;
             top: 0;
@@ -313,6 +313,7 @@ section {
                 height: var(--vh);
             }
         }
+
         .six-form {
             position: absolute;
             top: 100vh;
@@ -321,13 +322,10 @@ section {
                 height: var(--vh);
             }
         }
-        // min-height: inherit;
-        // position: absolute;
     }
+
     &.seven {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding-top: 200px;
     }
 }
 
@@ -353,43 +351,41 @@ section {
     }
 }
 
-
 .contact-form {
-    // position: fixed;
-    // top: 50%;
-    // transform: translateY(-50%) translate3d(-50%, 0px, 0px);
-    // opacity: 0;
     background-color: #fff;
     padding: 1%;
-    // z-index: 100;
     margin: auto;
-    // margin-left: 5%;
 
-    @media (min-width: 480px) {
-        // transform: translateY(-50%) translate3d(-100%, 0px, 0px);
-        // margin-left: 0;
-    }
+    @media (min-width: 480px) {}
 }
-
 
 .svg {
     &-screen {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1200px;
         height: 100vh;
-        height: -webkit-fill-available;
-        // height: -webkit-fill-available;
+        overflow: hidden;
+        @media (hover: none) and (pointer: coarse) {}
         display: block;
+        @media (min-width: 768px) {
+            width: 1400px;
+        }
 
-        image {
+        @media (min-width: 1400px) {
+            width: 1920px;
+        }
+
+        image,
+        img {
             position: absolute;
             display: block;
+            width: 100%;
             height: 100%;
-            width: auto;
-            // width: 1920px;
-            // height: -webkit-fill-available;
+            @media (hover: none) and (pointer: coarse) {}
         }
 
         .one & {
@@ -398,14 +394,7 @@ section {
             }
         }
 
-        &__virus, &__room {
-            // object-fit: cover;
-            // object-position: center;
-        }
-        &__room {
-        }
         &__virus {
-            // z-index: 100;
             image {
                 opacity: 0.05;
 
@@ -419,4 +408,24 @@ section {
 
 .img-box {
     display: none;
+}
+
+p {
+    max-width: 80ch;
+}
+
+.honey {
+    background-image: url("../images/bg-honey.jpg");
+}
+
+.scene-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    font-size: 1.2rem;
+}
+
+figure {
+    margin: 0;
+    padding: 0;
 }

@@ -79,3 +79,10 @@ $breakpoint-mini-max: ($breakpoint-small - 1) !default;
 $breakpoint-small-max: ($breakpoint-medium - 1) !default;
 $breakpoint-medium-max: ($breakpoint-large - 1) !default;
 $breakpoint-large-max: ($breakpoint-xlarge - 1) !default;
+
+:root {
+	--brand-blue: #0b77b9;
+	--brand-green: #006167;
+	--brand-white: #fff;
+	--brand-lightgray: #F7F7F7;
+}

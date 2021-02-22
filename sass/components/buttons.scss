@@ -39,5 +39,22 @@
 				color: $btn_contrast_text_color;
 			}
 		}
-	}	
+	}
+}
+
+
+.button {
+	display: inline-block;
+	border-radius: 200px;
+	background-color: var(--brand-blue);
+	padding: 1em 3em;
+	color: var(--brand-white);
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 800;
+	letter-spacing: 0.09em;
+
+	&:hover,&:active {
+		box-shadow: 0 0 5px rgba(var(--brand-blue),0.25)
+	}
 }
